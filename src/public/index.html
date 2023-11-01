@@ -3,9 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="https://img.freepik.com/vector-premium/lista-tareas-hoja-papel-documento-tarea-grande-casilla-verificacion-plano_277904-1087.jpg"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
     <title>Lista de Quehaceres</title>
   </head>
-  <body>
-        <h1>Hola Mundo</h1>
+  <body class="container my-5">
+    <h1 class="text-center mt-5 mb-5">Lista de Quehaceres</h1>
+    <form class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control mx-5"
+        placeholder="Nombre de la Tarea"
+        aria-label="Recipient's username"
+        aria-describedby="button-addon2"
+      />
+      <button class="btn btn-primary mx-5" style="width: 200px" type="submit">
+        Agregar
+      </button>
+    </form>
+    <div class="form-check my-5">
+      <ul class="list-group mx-1">
+        <li class="list-group-item">
+          <input
+            class="form-check-input mx-2"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Checked checkbox
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div class="d-flex justify-content-evenly">
+      <button
+        type="button"
+        class="btn btn-danger"
+        style="width: 200px; height: 50px"
+      >
+        Eliminar Todo
+      </button>
+      <button
+        type="button"
+        class="btn btn-dark"
+        style="width: 200px; height: 50px"
+      >
+        Eliminar Seleccionados
+      </button>
+    </div>
   </body>
 </html>
