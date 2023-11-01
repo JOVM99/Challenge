@@ -1,4 +1,5 @@
 const express = require("express");
+const connectDB = require("./bd/database.config");
 const app = express();
 const path = require("path");
 const port = 3000;
@@ -8,6 +9,11 @@ app.get("/", (_req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
-});
+const bootstrap = async () => {
+  await connectDB();
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+  });
+};
+
+bootstrap();
