@@ -54,4 +54,11 @@ const deleteCompleted = async () => {
   getTasks();
 };
 
+const deleteAll = async () => {
+  const res = await fetch(`/api/todos/all`, {
+    method: "DELETE",
+  });
+  await res.json();
+  getTasks();
+};
 getTasks();
