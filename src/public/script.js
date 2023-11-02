@@ -5,7 +5,7 @@ const getTasks = async () => {
   list.innerHTML = "";
   data.forEach((todo) => {
     const listItem = document.createElement("li");
-    listItem.classList.add('list-group-item');
+    listItem.classList.add("list-group-item");
     listItem.innerHTML = `
         <input
             class="form-check-input mx-2"
@@ -36,5 +36,22 @@ const addTask = async () => {
   }
 };
 
-getTasks();
+const updateTask = async (id) => {
+  const res = await fetch(`/api/todos/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ completed: event.target.checked }),
+  });
+  await res.json();
+  getTasks();
+};
 
+const deleteCompleted = async () => {
+  const res = await fetch(`/api/todos`, {
+    method: "DELETE",
+  });
+  await res.json();
+  getTasks();
+};
+
+getTasks();
