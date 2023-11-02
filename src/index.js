@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const connectDB = require("./bd/database.config");
 const Todo = require("./bd/schema");
 const app = express();
-const path = require("path");
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,6 +10,7 @@ app.use(bodyParser.json());
 
 app.use(express.static("src/public"));
 
+//Get the tasks
 app.get("/api/todos", async (req, res) => {
   try {
     const todos = await Todo.find({});
@@ -20,6 +20,7 @@ app.get("/api/todos", async (req, res) => {
   }
 });
 
+//Save a task
 app.post("/api/todos", async (req, res) => {
   const newTodo = new Todo(req.body);
   try {
@@ -30,6 +31,7 @@ app.post("/api/todos", async (req, res) => {
   }
 });
 
+//Update if a task is completed
 app.patch("/api/todos/:id", async (req, res) => {
   try {
     const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, {
@@ -41,6 +43,7 @@ app.patch("/api/todos/:id", async (req, res) => {
   }
 });
 
+//Delete completed tasks
 app.delete("/api/todos", async (req, res) => {
   try {
     await Todo.deleteMany({ completed: true });
@@ -52,6 +55,7 @@ app.delete("/api/todos", async (req, res) => {
   }
 });
 
+//Delete all tasks
 app.delete("/api/todos/all", async (req, res) => {
   try {
     await Todo.deleteMany({});
@@ -61,6 +65,7 @@ app.delete("/api/todos/all", async (req, res) => {
   }
 });
 
+//Connect database and server
 const bootstrap = async () => {
   await connectDB();
   app.listen(port, () => {

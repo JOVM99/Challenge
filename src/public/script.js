@@ -1,3 +1,4 @@
+//Get the tasks
 const getTasks = async () => {
   const res = await fetch("/api/todos");
   const data = await res.json();
@@ -22,6 +23,7 @@ const getTasks = async () => {
   });
 };
 
+//Add a task
 const addTask = async () => {
   const newTask = document.getElementById("task").value;
   if (newTask.trim() !== "") {
@@ -36,6 +38,7 @@ const addTask = async () => {
   }
 };
 
+//Update whether the task is completed or not
 const updateTask = async (id) => {
   const res = await fetch(`/api/todos/${id}`, {
     method: "PATCH",
@@ -46,6 +49,7 @@ const updateTask = async (id) => {
   getTasks();
 };
 
+//Delete completed tasks
 const deleteCompleted = async () => {
   const res = await fetch(`/api/todos`, {
     method: "DELETE",
@@ -54,6 +58,7 @@ const deleteCompleted = async () => {
   getTasks();
 };
 
+//Delete all tasks
 const deleteAll = async () => {
   const res = await fetch(`/api/todos/all`, {
     method: "DELETE",
